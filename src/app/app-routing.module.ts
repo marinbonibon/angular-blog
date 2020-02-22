@@ -1,11 +1,26 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {MainLayoytComponent} from './shared/components/main-layoyt/main-layoyt.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {PostPageComponent} from './post-page/post-page.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: MainLayoytComponent, children: [
+      {path: '', redirectTo: '/', pathMatch: 'full'},
+      {path: '', component: HomePageComponent},
+      {path: 'post/:id', component: PostPageComponent}
+    ]
+  },
+  {
+    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

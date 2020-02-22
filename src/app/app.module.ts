@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainLayoytComponent } from './shared/components/main-layoyt/main-layoyt.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { PostPageComponent } from './post-page/post-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainLayoytComponent,
+    HomePageComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,
