@@ -1,6 +1,10 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Login to admit panel</h2>
 
+  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+  {{error}}
+  </div>
+
   <div class="form-control"
        [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
   >
@@ -35,5 +39,5 @@
   <button
     type="submit"
     class="btn btn-primary"
-    [disabled]="form.invalid">Login</button>
+    [disabled]="form.invalid || submitted">Login</button>
 </form>
