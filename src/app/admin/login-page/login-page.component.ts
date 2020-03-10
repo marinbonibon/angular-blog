@@ -23,6 +23,8 @@ export class LoginPageComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       if (params.loginAgain) {
         this.message = 'Please, enter email and password';
+      } else if (params.authFailed) {
+        this.message = 'Session has been expired. Please, enter email and password again';
       }
     });
     this.form = new FormGroup({
